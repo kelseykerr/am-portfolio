@@ -6,7 +6,7 @@ import com.impulsecontrol.portfolio.db.ArtworkDAO;
 import io.dropwizard.auth.AuthValueFactoryProvider;
 import com.impulsecontrol.portfolio.auth.ExampleAuthenticator;
 import com.impulsecontrol.portfolio.filter.DateRequiredFeature;
-import com.impulsecontrol.portfolio.resources.PhotographyResource;
+import com.impulsecontrol.portfolio.resources.PortfolioResource;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.auth.AuthDynamicFeature;
@@ -70,6 +70,6 @@ public class PortfolioApp extends Application<PortfolioConfiguration> {
                 .buildAuthFilter()));
         environment.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
         environment.jersey().register(RolesAllowedDynamicFeature.class);
-        environment.jersey().register(new PhotographyResource(artworkDAO));
+        environment.jersey().register(new PortfolioResource(artworkDAO));
     }
 }

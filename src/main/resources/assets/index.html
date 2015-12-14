@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="portfolioApp">
+<html lang="en" ng-app="portfolioApp" ng-strict-di>
 <head>
     <meta charset="utf-8">
     <title>Ann Marie</title>
@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/portfolio.css">
 </head>
-<body id="top">
-<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+<body id="top" class="background">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#portfolio-navbar-collapse">
@@ -34,7 +34,7 @@
         </div>
     </div>
 </nav>
-<div ng-view class="page"></div>
+<div ng-view class="animate"></div>
 
 <script src="angular/angular.min.js"></script>
 <script src="angular/angular-route.min.js"></script>
@@ -44,7 +44,10 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="photography/photography.js"></script>
 <script src="about/about.js"></script>
+<script src="artwork/artwork.js"></script>
+<script src="home/home.js"></script>
 <script src="portfolio-router.js"></script>
+<script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
 
 </body>
 </html>

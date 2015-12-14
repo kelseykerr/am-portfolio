@@ -1,8 +1,10 @@
 angular.module('portfolioApp', [
     'ngRoute',
+    'ngAnimate',
     'portfolioApp.photography',
     'portfolioApp.about',
-    'ngAnimate'
+    'portfolioApp.artwork',
+    'akoenig.deckgrid'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {

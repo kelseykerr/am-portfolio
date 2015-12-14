@@ -4,6 +4,7 @@ import com.impulsecontrol.portfolio.core.Artwork;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,9 +19,13 @@ public class ArtworkDAO extends AbstractDAO<Artwork> {
     }
 
     public List<Artwork> findAll() {
-        LOGGER.debug("Fetching all artwork from the database.");
         Criteria c = currentSession().createCriteria(Artwork.class);
-        LOGGER.debug("Found [" + c.list().size() + "] entries in the artwork database.");
+        return c.list();
+    }
+
+    public List<Artwork> findArtworkByCategoryId(List<Long> categoryIds) {
+        Criteria c = currentSession().createCriteria(Artwork.class)
+                .add(Restrictions.in("category.id", categoryIds));
         return c.list();
     }
 }
