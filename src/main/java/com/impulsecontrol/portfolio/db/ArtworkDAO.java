@@ -3,6 +3,7 @@ package com.impulsecontrol.portfolio.db;
 import com.impulsecontrol.portfolio.core.Artwork;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
@@ -27,5 +28,16 @@ public class ArtworkDAO extends AbstractDAO<Artwork> {
         Criteria c = currentSession().createCriteria(Artwork.class)
                 .add(Restrictions.in("category.id", categoryIds));
         return c.list();
+    }
+
+    public List<Artwork> getArtworkByCategoryAndQuery(Long categoryId, String queryTerm) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("SELECT a.* from artwork a where a.category = :categoryId and a.description like :queryTerm ");
+        SQLQuery query = this.currentSession().createSQLQuery(sb.toString()).addEntity(Artwork.class);
+        query.setParameter("categoryId", categoryId);
+        query.setParameter("queryTerm", "%" + queryTerm.toLowerCase() + "%");
+        List<Artwork> artwork = query.list();
+        return artwork;
+
     }
 }

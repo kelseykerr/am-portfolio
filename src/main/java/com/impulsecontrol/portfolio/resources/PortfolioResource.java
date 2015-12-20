@@ -7,6 +7,7 @@ import io.dropwizard.hibernate.UnitOfWork;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +26,10 @@ public class PortfolioResource {
     @GET
     @UnitOfWork
     @Path("/photography")
-    public List<Artwork> getAllPhotographs() {
+    public List<Artwork> getAllPhotographs(@QueryParam("queryTerm") String queryTerm) {
+        if (queryTerm != null) {
+            return artworkDAO.getArtworkByCategoryAndQuery(1L, queryTerm);
+        }
         return artworkDAO.findArtworkByCategoryId(Collections.singletonList(1L));
     }
 

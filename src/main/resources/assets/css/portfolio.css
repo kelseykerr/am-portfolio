@@ -7,7 +7,7 @@
 body {
 	margin-top: 50px;
 	margin-bottom: 50px;
-	background: none;
+	background: #000000;
 }
 
 .full {
@@ -57,6 +57,7 @@ body {
 }
 .animate.ng-enter,
 .animate.ng-leave {
+    background: #000000;
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
 }
@@ -283,22 +284,14 @@ only screen and (max-width : 480px) {
     padding-right: 11px;
 }
 
-/*.background {
-    position: absolute;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    background:rgba(0, 0, 0, .9);
-    color:#fff;
-    top: 0;
-    left: 0;
-}*/
-
 .background {
-    background:rgba(0, 0, 0, .9);
+    background-color: #000000;
 
 }
 
+.background-add, .background-remove {
+    transition: background-color 1000ms linear;
+}
 
 .a {
     left: 10%;
@@ -354,4 +347,8 @@ only screen and (max-width : 480px) {
     font-family: Prata, Georgia, sans-serif;
     -webkit-font-smoothong: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.search-bar {
+    margin-top: 50px;
 }
