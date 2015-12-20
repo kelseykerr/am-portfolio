@@ -200,7 +200,6 @@ body {
 .photo .photo-wrapper {
     min-height:60px;
     width: 300px;
-    max-height: 300px;
 }
 
 .photo .photo-description {
@@ -279,7 +278,6 @@ only screen and (max-width : 480px) {
 }
 
 .artwork-image {
-    max-height: 300px;
     max-width: 300px;
     padding-right: 11px;
 }
